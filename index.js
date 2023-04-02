@@ -15,8 +15,16 @@ const app = express();
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
+<<<<<<< HEAD
 const jobs=require("./routes/admin.js");
 app.use("",jobs);
 app.listen(4000,"localhost",()=>{
+=======
+//const movies=require("./routes/movies.js");
+const jobs = require("./routes/admin.js");
+//app.use("",movies);
+app.use("", jobs);
+app.listen(4000, "localhost", () => {
+>>>>>>> c8acb5c52c1f99596526242feb3fc6ada54bdd19
     console.log("server is running");
 });
