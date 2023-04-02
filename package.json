@@ -2,7 +2,7 @@
   "name": "pro1",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "dev": "nodemon index",
     "prod": "node index"

@@ -2,6 +2,13 @@ const { uuid } = require('uuidv4');
 const admin=require("express").Router();
 const conn=require("../db/connection");
 /////////////create job///////////////
+// const firstName =document.getElementsByClassName('first-name');
+// const lastName =document.getElementsByClassName('last-name');
+// const email =document.getElementsByClassName('email');
+// const password =document.getElementsByClassName('password');
+// const phone= document.getElementsByClassName('number');
+// const skill =document.getElementsByClassName('skills');
+// const aboutYou=document.getElementsByClassName('ABout you');
 admin.post('/create-job',(req, res)=>{
     const data=req.body;
     conn.query("insert into job set ?", {position:data.position,description:data.description,max_candidate_number:data.max_candidate_number,qualification:data.qualification},(err,result,fields)=>{
@@ -70,7 +77,7 @@ admin.delete('/delete-job/:id',(req,res)=>{
 admin.put('/update-user/:id',(req,res)=>{
     const { id }=req.params;
     const data=req.body;
-   conn.query("update user set? where ?",[{email:data.email,password:data.password,phone:data.phone,status:data.status,type:data.type,skill:data.skill},{id:id}],(err,result)=>{
+   conn.query("update user set? where ?",[{firstName:data.firstName,lastName:data.lastName,email:data.email,password:data.password,phone:data.phone,status:data.status,type:data.type,skill:data.skill,aboutYou:data.aboutYou},{id:id}],(err,result)=>{
   if (err){
       res.statusCode=500;
       res.send({
@@ -102,7 +109,7 @@ admin.delete('/delete-user/:id',(req,res)=>{
   /////////////assignment user///////////////
 admin.post('/assign-user',(req, res)=>{
     const data=req.body;
-    conn.query("insert into user set ?", {email:data.email,password:data.password,phone:data.phone,status:data.status,type:data.type,skill:data.skill},(err,result,fields)=>{
+    conn.query("insert into user set ?", {firstName:data.firstName,lastName:data.lastName,email:data.email,password:data.password,phone:data.phone,status:data.status,type:data.type,skill:data.skill,aboutYou:data.aboutYou},(err,result,fields)=>{
         if(err){
             res.send({
                 message:"there is error in post values in db"
@@ -119,6 +126,7 @@ admin.post('/assign-user',(req, res)=>{
     //////////list user///////////////////
     admin.get('/get-user',(req, res)=>{
         conn.query("select * from user",(err,result,fields)=>{
+            
             if(err){
                 res.send({
                     message:"there is error in get values from db"
@@ -129,24 +137,4 @@ admin.post('/assign-user',(req, res)=>{
         })
        
       });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 module.exports=admin;
