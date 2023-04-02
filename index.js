@@ -15,10 +15,10 @@ const app = express();
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
-const movies=require("./routes/movies.js");
-const jobs=require("./routes/admin.js");
-app.use("",movies);
-app.use("",jobs);
-app.listen(4000,"localhost",()=>{
+//const movies=require("./routes/movies.js");
+const jobs = require("./routes/admin.js");
+//app.use("",movies);
+app.use("", jobs);
+app.listen(4000, "localhost", () => {
     console.log("server is running");
 });
