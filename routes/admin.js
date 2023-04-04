@@ -9,6 +9,7 @@ const conn=require("../db/connection");
 // const phone= document.getElementsByClassName('number');
 // const skill =document.getElementsByClassName('skills');
 // const aboutYou=document.getElementsByClassName('ABout you');
+///////////////////////////create job//////////////
 admin.post('/create-job',(req, res)=>{
     const data=req.body;
     conn.query("insert into job set ?", {position:data.position,description:data.description,max_candidate_number:data.max_candidate_number,qualification:data.qualification},(err,result,fields)=>{
@@ -38,11 +39,11 @@ admin.get('/get-job',(req, res)=>{
     })
    
   });
-    //////////////////update in job////////////
-admin.put('/update-job/:id',(req,res)=>{
+    //////////////////update in  position of  job////////////
+admin.put('/update-job-position/:id',(req,res)=>{
       const { id }=req.params;
       const data=req.body;
-     conn.query("update job set? where ?",[{position:data.position,description:data.description,max_candidate_number:data.max_candidate_number,qualification:data.qualification},{id:id}],(err,result)=>{
+     conn.query("update job set? where ?",[{position:data.position},{id:id}],(err,result)=>{
     if (err){
         res.statusCode=500;
         res.send({
@@ -55,6 +56,57 @@ admin.put('/update-job/:id',(req,res)=>{
     }
      }) 
      });
+         //////////////////update in  description of  job////////////
+admin.put('/update-job-description/:id',(req,res)=>{
+    const { id }=req.params;
+    const data=req.body;
+   conn.query("update job set? where ?",[{description:data.description},{id:id}],(err,result)=>{
+  if (err){
+      res.statusCode=500;
+      res.send({
+          message:"there is error in update"
+      });
+  }else{
+      res.send({
+          message:"updated sucessfully"
+         });
+  }
+   }) 
+   });
+       //////////////////update in  max cadidate number  of  job////////////
+admin.put('/update-job-maxCandidateNumber/:id',(req,res)=>{
+    const { id }=req.params;
+    const data=req.body;
+   conn.query("update job set? where ?",[{max_candidate_number:data.max_candidate_number},{id:id}],(err,result)=>{
+  if (err){
+      res.statusCode=500;
+      res.send({
+          message:"there is error in update"
+      });
+  }else{
+      res.send({
+          message:"updated sucessfully"
+         });
+  }
+   }) 
+   });
+       //////////////////update in  qualification of  job////////////
+admin.put('/update-job-qualification/:id',(req,res)=>{
+    const { id }=req.params;
+    const data=req.body;
+   conn.query("update job set? where ?",[{qualification:data.qualification},{id:id}],(err,result)=>{
+  if (err){
+      res.statusCode=500;
+      res.send({
+          message:"there is error in update"
+      });
+  }else{
+      res.send({
+          message:"updated sucessfully"
+         });
+  }
+   }) 
+   });
      //////////////delete specific job
 admin.delete('/delete-job/:id',(req,res)=>{
       const { id }=req.params;
@@ -73,11 +125,130 @@ admin.delete('/delete-job/:id',(req,res)=>{
     });
  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-     //////////////////update data of user user////////////
-admin.put('/update-user/:id',(req,res)=>{
+     //////////////////update first name of user////////////
+admin.put('/update-user-firstName/:id',(req,res)=>{
     const { id }=req.params;
     const data=req.body;
-   conn.query("update user set? where ?",[{firstName:data.firstName,lastName:data.lastName,email:data.email,password:data.password,phone:data.phone,status:data.status,type:data.type,skill:data.skill,aboutYou:data.aboutYou},{id:id}],(err,result)=>{
+   conn.query("update user set? where ?",[{firstName:data.firstName},{id:id}],(err,result)=>{
+  if (err){
+      res.statusCode=500;
+      res.send({
+          message:"there is error in update"
+      });
+  }else{
+      res.send({
+          message:"updated sucessfully"
+         });
+  }
+   }) 
+   });
+       //////////////////update last name of user////////////
+admin.put('/update-user-lastName/:id',(req,res)=>{
+    const { id }=req.params;
+    const data=req.body;
+   conn.query("update user set? where ?",[{lastName:data.lastName},{id:id}],(err,result)=>{
+  if (err){
+      res.statusCode=500;
+      res.send({
+          message:"there is error in update"
+      });
+  }else{
+      res.send({
+          message:"updated sucessfully"
+         });
+  }
+   }) 
+   }); 
+     //////////////////update email of user////////////
+     admin.put('/update-user-email/:id',(req,res)=>{
+        const { id }=req.params;
+        const data=req.body;
+       conn.query("update user set? where ?",[{email:data.email},{id:id}],(err,result)=>{
+      if (err){
+          res.statusCode=500;
+          res.send({
+              message:"there is error in update"
+          });
+      }else{
+          res.send({
+              message:"updated sucessfully"
+             });
+      }
+       }) 
+       });
+            //////////////////update password of user////////////
+admin.put('/update-user-password/:id',(req,res)=>{
+    const { id }=req.params;
+    const data=req.body;
+   conn.query("update user set? where ?",[{password:data.password},{id:id}],(err,result)=>{
+  if (err){
+      res.statusCode=500;
+      res.send({
+          message:"there is error in update"
+      });
+  }else{
+      res.send({
+          message:"updated sucessfully"
+         });
+  }
+   }) 
+   });
+        //////////////////update phone of user////////////
+admin.put('/update-user-phone/:id',(req,res)=>{
+    const { id }=req.params;
+    const data=req.body;
+   conn.query("update user set? where ?",[{phone:data.phone},{id:id}],(err,result)=>{
+  if (err){
+      res.statusCode=500;
+      res.send({
+          message:"there is error in update"
+      });
+  }else{
+      res.send({
+          message:"updated sucessfully"
+         });
+  }
+   }) 
+   });
+        //////////////////update status of user////////////
+admin.put('/update-user-status/:id',(req,res)=>{
+    const { id }=req.params;
+    const data=req.body;
+   conn.query("update user set? where ?",[{status:data.status},{id:id}],(err,result)=>{
+  if (err){
+      res.statusCode=500;
+      res.send({
+          message:"there is error in update"
+      });
+  }else{
+      res.send({
+          message:"updated sucessfully"
+         });
+  }
+   }) 
+   });
+        //////////////////update skill of user////////////
+admin.put('/update-user-skill/:id',(req,res)=>{
+    const { id }=req.params;
+    const data=req.body;
+   conn.query("update user set? where ?",[{skill:data.skill},{id:id}],(err,result)=>{
+  if (err){
+      res.statusCode=500;
+      res.send({
+          message:"there is error in update"
+      });
+  }else{
+      res.send({
+          message:"updated sucessfully"
+         });
+  }
+   }) 
+   });
+        //////////////////update about you of user////////////
+admin.put('/update-user-aboutYou/:id',(req,res)=>{
+    const { id }=req.params;
+    const data=req.body;
+   conn.query("update user set? where ?",[{aboutYou:data.aboutYou},{id:id}],(err,result)=>{
   if (err){
       res.statusCode=500;
       res.send({
